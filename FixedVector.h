@@ -8,8 +8,8 @@ using namespace std;
 template <typename T>
 class FixedVector {
 private:
-    int _size;
-    T* _array;
+    int size;
+    T* array;
 
 public:
     // Constructors
@@ -34,43 +34,43 @@ public:
 // Default Constructor: empty vector
 template <typename T>
 FixedVector<T>::FixedVector() {
-    _size = 0;
-    _array = new T[_size];
+    size = 0;
+    array = new T[size];
 }
 
 // Constructor with initial size argument
 template <typename T>
-FixedVector<T>::FixedVector(int size) {
-    if (size < 0) {
+FixedVector<T>::FixedVector(int newSize) {
+    if (newSize < 0) {
         throw invalid_argument("size is less than 0");
     }
-    _size = size;
-    _array = new T[_size];
+    size = newSize;
+    array = new T[size];
 }
 
 // Copy Constructor
 template <typename T>
 FixedVector<T>::FixedVector(const FixedVector<T>& input) {
-    _size = input._size;
-    _array = new T[_size];
-    for (int i = 0; i < _size; i++) {
-        _array[i] = input._array[i];
+    size = input.size;
+    array = new T[size];
+    for (int i = 0; i < size; i++) {
+        array[i] = input.array[i];
     }
 }
 
 // Deconstructor
 template <typename T>
 FixedVector<T>::~FixedVector() {
-    delete[] _array;
+    delete[] array;
 }
 
 // Getter
 template <typename T>
 T& FixedVector<T>::get(int index) {
-    if ((index < 0) || (index >= _size)) {
+    if ((index < 0) || (index >= size)) {
         throw range_error("index out of bounds");
     }
-    return _array[index];
+    return array[index];
 }
 
 // Setter
@@ -79,31 +79,31 @@ void FixedVector<T>::set(int index, T value) {
     if (isEmpty()) {
         throw invalid_argument("array is empty");
     }
-    if ((index < 0) || (index >= _size)) {
+    if ((index < 0) || (index >= size)) {
         throw range_error("index out of bounds");
     }
-    _array[index] = value;
+    array[index] = value;
 }
 
 template <typename T>
 int FixedVector<T>::getSize() {
-    return _size;
+    return size;
 }
 
 template <typename T>
 bool FixedVector<T>::isEmpty() {
-    return (_size == 0);
+    return (size == 0);
 }
 
 // Overloaded Assignment Operator
 template <typename T>
 FixedVector<T>& FixedVector<T>::operator=(const FixedVector<T>& rhs) {
     if (this != &rhs) {
-        delete[] _array;
-        _size = rhs._size;
-        _array = new T[_size];
-        for (int i = 0; i < _size; i++) {
-            _array[i] = rhs._array[i];
+        delete[] array;
+        size = rhs.size;
+        array = new T[size];
+        for (int i = 0; i < size; i++) {
+            array[i] = rhs.array[i];
         }
     }
     return *this;

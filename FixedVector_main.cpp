@@ -7,21 +7,21 @@ using namespace std;
 
 class Student {
 private:
-    string _name;
-    int _num_of_semesters;
+    string name;
+    int numOfSemesters;
 
 public:
     void print() {
-        cout << "Name:" << _name << "; No. of semesters=" << _num_of_semesters << endl;
+        cout << "Name:" << name << "; No. of semesters=" << numOfSemesters << endl;
     }
-    void setName(string name) {
-        _name = name;
+    void setName(string newName) {
+        name = newName;
     }
     void setNSemesters(int n) {
-        _num_of_semesters = n;
+        numOfSemesters = n;
     }
     void updateNSemesters() {
-        _num_of_semesters++;
+        numOfSemesters++;
     }
 };
 
